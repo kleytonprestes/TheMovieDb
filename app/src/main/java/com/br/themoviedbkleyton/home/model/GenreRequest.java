@@ -41,7 +41,7 @@ public class GenreRequest extends BaseSync {
     public void startSync() {
         ServiceApi serviceApi = RetrofitConfig.getService();
 
-        repo = serviceApi.getGenre(ApiUtils.API_KEY);
+        repo = serviceApi.getGenre(ApiUtils.API_KEY, ApiUtils.API_LANGUAGE);
 
         repo.enqueue(new Callback<GenreResponse>() {
             @Override

@@ -16,7 +16,7 @@ import retrofit2.http.Query;
 public interface ServiceApi {
 
     @GET("/3/genre/movie/list")
-    Call<GenreResponse> getGenre(@Query("api_key") String apiKey);
+    Call<GenreResponse> getGenre(@Query("api_key") String apiKey, @Query("language") String language);
 
 
     @GET("/3/movie/{movie_id}/similar")
