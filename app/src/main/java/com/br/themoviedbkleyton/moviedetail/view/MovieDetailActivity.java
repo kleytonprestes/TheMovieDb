@@ -3,18 +3,19 @@ package com.br.themoviedbkleyton.moviedetail.view;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.br.themoviedbkleyton.R;
+import com.br.themoviedbkleyton.home.view.MovieGenreActivity;
+import com.br.themoviedbkleyton.home.view.MovieGenreActivity_;
 import com.br.themoviedbkleyton.moviedetail.contract.MovieDetailContract;
 import com.br.themoviedbkleyton.moviedetail.model.MovieDetail;
 import com.br.themoviedbkleyton.moviedetail.presenter.MovieDetailPresenter;
@@ -62,6 +63,10 @@ public class MovieDetailActivity extends BaseActivity implements MovieDetailCont
 
         configToolbar();
         initViews();
+
+        //POTTER AQUI
+        MovieGenreActivity_.intent(this);
+
 
     }
 
