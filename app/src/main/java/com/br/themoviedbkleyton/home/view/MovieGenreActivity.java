@@ -3,7 +3,6 @@ package com.br.themoviedbkleyton.home.view;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +16,9 @@ import com.br.themoviedbkleyton.home.contract.MovieGenreContract;
 import com.br.themoviedbkleyton.home.model.GenreAndMoviesResponse;
 import com.br.themoviedbkleyton.home.presenter.MovieGenrePresenter;
 
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 
 import base.baseactivity.BaseActivity;
@@ -25,24 +27,25 @@ import base.baseactivity.BaseActivity;
  * Created by kleyton on 16/01/18.
  */
 
+@EActivity(R.layout.movies_category_list)
 public class MovieGenreActivity extends BaseActivity implements MovieGenreContract.View {
 
     private MovieGenreContract.Presenter presenter = new MovieGenrePresenter();
-
     private MovieGenreAdapter mAdapter;
-
-    private RecyclerView categoryList;
-
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private Toolbar toolbar;
+    @ViewById(R.id.category_list)
+    RecyclerView categoryList;
 
-    private ProgressBar progressBar;
+    @ViewById(R.id.progress)
+    ProgressBar progressBar;
+
+    @ViewById(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.movies_category_list);
 
         initViews();
         requestGenres();
@@ -51,16 +54,11 @@ public class MovieGenreActivity extends BaseActivity implements MovieGenreContra
 
     private void initViews() {
         presenter.attachView(this);
-        categoryList = findViewById(R.id.category_list);
-        progressBar = findViewById(R.id.progress);
         configToolbar();
-
     }
 
     private void configToolbar() {
-        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
 
     private void requestGenres() {
